@@ -8,10 +8,10 @@ function Product(props) {
     const {name, img, seller, price, stock} = props.product;
     return (
         <div className="product">
-            <div>
+            <div className="product-img">
                 <img src={img} alt=""/>
             </div>
-            <div>
+            <div className="product-details">
                 <h4 className="product-name">{name}</h4>
                 <br/>
                 <p><small>by: {seller}</small></p>
