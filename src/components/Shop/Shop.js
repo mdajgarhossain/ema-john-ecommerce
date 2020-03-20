@@ -24,6 +24,7 @@ function Shop() {
                         <Product 
                             handleAddProduct={handleAddProduct} 
                             product={product}
+                            showAddToCart={true}
                         />
                     )
                 }
