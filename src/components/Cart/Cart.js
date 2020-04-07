@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Cart = (props) => {
-    // console.log(props.children);
     const cart = props.cart;
+    
     // const total = cart.reduce((total, product) => total + (product.price * product.quantity), 0);
     let total = 0;
     for(let i = 0; i < cart.length; i++) {

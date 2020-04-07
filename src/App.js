@@ -13,36 +13,43 @@ import Inventory from './components/Inventory/Inventory';
 import NotFound from './components/NotFound/NotFound';
 import ProductDetail from './components/ProductDetail/ProductDetail';
 import Login from './components/Login/Login';
+import { AuthContextProvider, PrivateRoute } from './components/Login/useAuth';
+import Shipment from './components/Shipment/Shipment';
 
 function App() {
   return (
     <div>
-      <Header />
-      <Router>
-        <Switch>
-          <Route path="/shop">
-            <Shop />
-          </Route>
-          <Route path="/review">
-            <Review />
-          </Route>
-          <Route path="/inventory">
-            <Inventory />
-          </Route>
-          <Route exact path="/">
-            <Shop />
-          </Route>
-          <Route path="/product/:productKey">   {/* dynamic path */}
-            <ProductDetail />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="*">
-            <NotFound />
-          </Route>
-        </Switch>
-      </Router>
+      <AuthContextProvider>
+        <Header />
+        <Router>
+          <Switch>
+            <Route path="/shop">
+              <Shop />
+            </Route>
+            <Route path="/review">
+              <Review />
+            </Route>
+            <Route path="/inventory">
+              <Inventory />
+            </Route>
+            <Route exact path="/">
+              <Shop />
+            </Route>
+            <Route path="/product/:productKey">   {/* dynamic path */}
+              <ProductDetail />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <PrivateRoute path="/shipment">
+              <Shipment />
+            </PrivateRoute>
+            <Route path="*">
+              <NotFound />
+            </Route>
+          </Switch>
+        </Router>
+      </AuthContextProvider>
     </div>
   );
 }

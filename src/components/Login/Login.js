@@ -1,9 +1,23 @@
 import React from 'react';
-import Auth from './use-auth';
+import Auth from './useAuth';
 
 const Login = () => {
     const auth = Auth();
     // console.log(auth);
+    
+    const handleSignIn = () => {
+        auth.signInWithGoogle()
+        .then(res => {
+            window.location.pathname = '/review'; //for redirect page
+        })
+    };
+
+    const handleSignOut = () => {
+        auth.signOut()
+        .then(res => {
+            window.location.pathname = '/';
+        });
+    };
     
     return (
         <div>
@@ -11,8 +25,8 @@ const Login = () => {
             
             {
                 auth.user ? 
-                    <button onClick={auth.signOut}>Sign Out</button> :
-                    <button onClick={auth.signInWithGoogle}>Sign In with Google</button>
+                    <button onClick={handleSignOut}>Sign Out</button> :
+                    <button onClick={handleSignIn}>Sign In with Google</button>
             }
         </div>
     );
